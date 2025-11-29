@@ -1,0 +1,29 @@
+{
+  "appId": "com.gujaratibillbook.app",
+  "productName": "Gujarati BillBook",
+  "directories": {
+    "buildResources": "client/public"
+  },
+  "files": [
+    "dist/**/*",
+    "package.json",
+    "node_modules/**/*"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "client/public/app-icon.jpg"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  }
+}
