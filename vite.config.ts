@@ -19,6 +19,7 @@ export default defineConfig({
         ]
       : []),
   ],
+
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -26,11 +27,26 @@ export default defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
+
   root: path.resolve(import.meta.dirname, "client"),
+
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
+        },
+      },
+    },
+
+    chunkSizeWarningLimit: 1500,
   },
+
   server: {
     fs: {
       strict: true,
